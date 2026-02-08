@@ -1,4 +1,4 @@
-# 📱 Getir Clone – React Native E-Commerce App
+# 📱 Getir Clone – React Native App
 
 A modern mobile e-commerce application clone of Getir, built with **React Native (Expo)**.  
 Features a complete shopping experience with product browsing, category filtering, cart management, and deep linking support.
