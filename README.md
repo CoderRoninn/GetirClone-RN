@@ -291,8 +291,4 @@ Deep linking will automatically work with `getir://` scheme in production builds
 
 Suggestions, improvements, and contributions are welcome!
 
----
 
-## 📄 License
-
-This project is for educational purposes.
