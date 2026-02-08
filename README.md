@@ -78,7 +78,7 @@ Features a complete shopping experience with product browsing, category filterin
 ### 1. Clone repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/CoderRoninn/GetirClone-RN
 cd getir_clone
 ```
 
