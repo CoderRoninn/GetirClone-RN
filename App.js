@@ -1,20 +1,49 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { LogBox } from 'react-native';
+import RootNavigator from './src/navigators/RootNavigator';
+import store from './src/redux/store';
+import { Provider } from 'react-redux';
+import * as Linking from 'expo-linking';
+import screens from './src/const/screens';
 
-export default function App() {
+// Ignore all logs and warnings
+LogBox.ignoreAllLogs();
+
+const prefix = Linking.createURL('/');
+
+/**
+ * App Component
+ * Main application component with navigation container
+ */
+const App = () => {
+  // Deep Link Config
+  const linking = {
+    prefixes: [prefix],
+    config: {
+      screens: {
+        // Tab screens
+        [screens.search]: {
+          path: 'search',
+        },
+        // Nested stack screens (inside HomeNavigator)
+        [screens.home]: {
+          screens: {
+            [screens.cart]: {
+              path: 'cart',
+            },
+          },
+        },
+      }
+    }
+  }
+  
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Provider store={store}>
+    <NavigationContainer linking={linking}>
+      <RootNavigator />
+    </NavigationContainer>
+    </Provider>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
